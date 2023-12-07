@@ -9,7 +9,7 @@ const pool = mysql.createPool({
   password: "Administrador_1",
   database: "gym_admin_db",
   port: 3306,
-  connectionLimit: 10, // Puedes ajustar este valor según tus necesidades
+  connectionLimit: 10,
 });
 
 
