@@ -1,37 +1,15 @@
-/* expres es una libreria */
-
 const express = require("express");
 const mysql = require("mysql2");
 const app = express();
 
-const connectionString = {
+// Configurar los detalles de conexión a la base de datos
+const pool = mysql.createPool({
   host: "gym-admin-db.mysql.database.azure.com",
   user: "gym_admin1",
   password: "Administrador_1",
   database: "gym_admin_db",
-  port: 3306
-};
-
-const conn = mysql.createConnection(connectionString);
-
-// Conectar a la base de datos
-conn.connect((err) => {
-  if (err) {
-    console.error('Error al conectar a la base de datos:', err);
-    return;
-  }
-  console.log('Conexión exitosa a la base de datos');
-  
-  // Aquí puedes realizar tus consultas o acciones en la base de datos
-
-  // Cerrar la conexión cuando hayas terminado
- conn.end((err) => {
-    if (err) {
-      console.error('Error al cerrar la conexión:', err);
-    } else {
-      console.log('Conexión cerrada correctamente');
-    }
-  });
+  port: 3306,
+  connectionLimit: 10, // Puedes ajustar este valor según tus necesidades
 });
 
 
