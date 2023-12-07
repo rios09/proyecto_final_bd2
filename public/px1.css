@@ -1,0 +1,113 @@
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Arial', sans-serif;
+    background-color: #f4f4f4;
+}
+
+#sidebar {
+    width: 250px;
+    height: 100%;
+    background-color: #0b64d8;
+    position: fixed;
+    left: 0;
+    top: 0;
+    padding-top: 20px;
+    color: #fff;
+}
+
+#content {
+    margin-left: 250px;
+    padding: 20px;
+}
+
+a {
+    text-decoration: none;
+    color: #fff;
+    display: block;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+a:hover {
+    background-color: #555;
+}
+
+.dropdown {
+    padding: 10px;
+    cursor: pointer;
+}
+
+.dropdown-content {
+    display: none;
+    background-color: #555;
+    position: absolute;
+    min-width: 160px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+
+
+/* Main Section */
+.main{
+position: relative;
+padding: 25px;
+left: 15%;
+}
+.main-top{
+display: flex;
+width: 50%;
+}
+.main-top i{
+position: absolute;
+right: 0;
+margin: 10px 30px;
+color: rgb(110, 109, 109);
+cursor: pointer;
+}
+.main-skills{
+display: flex;
+margin-top: 20px;
+}
+.main-skills .card{
+width: 25%;
+margin: 10px;
+background: #0b64d8;
+text-align: center;
+border-radius: 20px;
+padding: 10px;
+box-shadow: 0 20px 35px rgba(0, 0, 0, 0.1);
+}
+.main-skills .card h3{
+margin: 10px;
+text-transform: capitalize;
+color: #f4f4f4;
+}
+.main-skills .card p{
+font-size: 12px;
+}
+.main-skills .card button{
+background: orangered;
+color: #fff;
+padding: 7px 15px;
+border-radius: 10px;
+margin-top: 15px;
+cursor: pointer;
+}
+.main-skills .card button:hover{
+background: rgba(223, 70, 15, 0.856);
+}
+.main-skills .card i{
+font-size: 22px;
+padding: 10px;
+}
+
+
+
+

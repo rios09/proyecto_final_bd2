@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gimnacio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body style="background-image: url('https://img.freepik.com/fotos-premium/centro-gimnasio-fitness-impecable-contemporaneo-interior-generativo-ai_391052-10889.jpg'); background-size: cover;"></body>
+
+
+   
+    
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">Golds Gym</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll"
+                aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarScroll">
+                <ul class="navbar-nav me-auto my-2 my-lg-0 navbar-nav-scroll" style="--bs-scroll-height: 100px;">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/principal"><i class="fas fa-home"></i> Inicio</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fas fa-id-card"></i> Membresia
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/tipoMembresia"> <i class="fas fa-list"></i> Tipo </a></li>
+                            <li><a class="dropdown-item" href="/agreMenbresia"> <i class="fas fa-plus"></i> Agregar </a></li>
+                           
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/agregarCl"><i class="fas fa-users"></i> Clientes</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            <i class="fas fa-cogs"></i> Otras opciones
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="/proveedor"><i class="fas fa-truck"></i> Proveedor</a></li>
+                            <li><a class="dropdown-item" href="/usuario"><i class="fas fa-user"></i> Usuario</a></li>
+                            <li><a class="dropdown-item" href="/cargos"><i class="fas fa-briefcase"></i> Cargo</a></li>
+                            <li><a class="dropdown-item" href="/staff"><i class="fas fa-user-plus"></i> Nuevo staff</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="#"><i class="fas fa-info-circle"></i> Información de App</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="max-width: 200px;">
+                    <button class="btn btn-outline-success" type="submit"><i class="fas fa-search"></i> Search</button>
+                </form>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div class="container bg-white mt-5">
+
+       
+        <div class="row">
+            <div class="col-md-6">
+                <h2><i class="fas fa-shopping-cart"></i> Formulario de Compra</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="noFactura" class="form-label">Número de Factura</label>
+                        <input type="text" class="form-control" id="noFactura" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="fechaCompra" class="form-label">Fecha de Compra</label>
+                        <input type="date" class="form-control" id="fechaCompra" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="totalCompra" class="form-label">Total de la Compra</label>
+                        <input type="number" class="form-control" id="totalCompra" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="codProveedor" class="form-label">Código de Proveedor</label>
+                        <input type="text" class="form-control" id="codProveedor" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Compra</button>
+                </form>
+            </div>
+
+            <div class="col-md-6">
+                <h2><i class="fas fa-box"></i> Formulario de Detalle de Compra</h2>
+                <form>
+                    <div class="mb-3">
+                        <label for="noFacturaCompra" class="form-label">Número de Factura</label>
+                        <input type="text" class="form-control" id="noFacturaCompra" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="codigoProductoCompra" class="form-label">Código de Producto</label>
+                        <input type="text" class="form-control" id="codigoProductoCompra" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="cantComprada" class="form-label">Cantidad Comprada</label>
+                        <input type="number" class="form-control" id="cantComprada" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="precioCompra" class="form-label">Precio de Compra</label>
+                        <input type="number" class="form-control" id="precioCompra" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="subtCompra" class="form-label">Subtotal de Compra</label>
+                        <input type="number" class="form-control" id="subtCompra" required>
+                    </div>
+                    <button type="submit" class="btn btn-primary"><i class="fas fa-save"></i> Guardar Detalle</button>
+                </form>
+            </div>
+        </div>
+
+        <div class="row mt-5">
+            <div class="col-md-12">
+                <h2><i class="fas fa-list"></i> Datos de Compra</h2>
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th>Número de Factura</th>
+                            <th>Fecha de Compra</th>
+                            <th>Total de Compra</th>
+                            <th>Código de Proveedor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- xxxxxxx-->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    
+    <div class="d-flex justify-content-center my-4">
+      
+        <button type="button" class="btn btn-danger me-3" >Eliminar</button>
+        <button type="button" class="btn btn-warning" >Modificar</button>
+    </div>
+    
+ 
+
+
+    </div>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+</body>
+
+</html>
