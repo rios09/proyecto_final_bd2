@@ -12,13 +12,26 @@ const connectionString = {
   port: 3306
 };
 
+const conn = mysql.createConnection(connectionString);
 
-connection.connect((err) => {
+// Conectar a la base de datos
+conn.connect((err) => {
   if (err) {
     console.error('Error al conectar a la base de datos:', err);
-  } else {
-    console.log('Conexión exitosa a la base de datos MySQL');
+    return;
   }
+  console.log('Conexión exitosa a la base de datos');
+  
+  // Aquí puedes realizar tus consultas o acciones en la base de datos
+
+  // Cerrar la conexión cuando hayas terminado
+ conn.end((err) => {
+    if (err) {
+      console.error('Error al cerrar la conexión:', err);
+    } else {
+      console.log('Conexión cerrada correctamente');
+    }
+  });
 });
 
 
