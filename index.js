@@ -93,26 +93,27 @@ app.get("/compra", function(req,res){
 
 
 /* /vali es el nombre q le asigne en el form y post sirve como un metodo*/
-app.post("/vali", function (req,res){
+app.post("/vali", function (req, res) {
   const datos = req.body;
-  let usuario = datos.usuario;
-  let contasena = datos.contrasena;
+  const usuario = datos.usuario;
+  const contrasena = datos.contrasena;
 
-  let regis = "SELECT * FROM usuarios WHERE nombre_usuario='"+usuario+"' AND contrasena='"+contasena+"'";
-  pool.query(regis, [usuario, contasena], function (error, results) {
+  const sql = "CALL ValidarUsuario(?, ?)";
+  
+  pool.query(sql, [usuario, contrasena], function (error, results) {
     if (error) {
       throw error;
     } else {
-      console.log(results); 
-      if (results.length > 0) {
+      console.log(results[0]); // results[0] contiene los resultados del procedimiento almacenado
+      if (results[0].length > 0) {
         res.render("principal");
       } else {
-     
+        // Lógica para el caso en que no se encuentra un usuario
       }
     }
   });
-  
 });
+
 
 
 /* este codigo va registrar los clientes a la base de datos*/
