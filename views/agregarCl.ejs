@@ -101,10 +101,7 @@
                         <label for="sexo" class="form-label">Sexo:</label>
                         <input type="text" class="form-control" id="sexo" name="sexo" placeholder="Sexo" autofocus />
                     </div>
-                    <div class="mb-1">
-                        <label for="estado" class="form-label">Estado:</label>
-                        <input type="text" class="form-control" id="estado" name="estado" placeholder="este se la eliminar" autofocus />
-                    </div>
+
                 
 
                 
@@ -120,32 +117,32 @@
                 <table class="table table-white table-striped">
                     <thead>
                         <tr>
-                            <th class="centrado">#</th>
-                            <th class="centrado">Nombre</th>
-                            <th class="centrado">apellido</th>
-                            <th class="centrado">Fecha Nacimiento</th>
-                            <th class="centrado">Cedula</th>
-                            <th class="centrado">Telefono</th>
+                            <th class="centrado">ID</th>
+                            <th class="centrado">Primer Nombre</th>
+                            <th class="centrado">Segundo Nombre</th>
+                            <th class="centrado">Primer Apellido</th>
+                            <th class="centrado">Segundo Apellido</th>
+                            <th class="centrado">Fecha de Nacimiento</th>
+                            <th class="centrado"> Cédula</th>
+                            <th class="centrado">Teléfono</th>
                             <th class="centrado">Sexo</th>
-                            <th class="centrado">ID Membresia</th>
-                            
                           
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="centrado">1</td>
-                            <td class="centrado">Nery</td>
-            
-                            <td class="centrado">Martinez</td>
-                      
-                            <td class="centrado">05/15/23</td>
-                            <td class="centrado">36879945</td>
-                            <td class="centrado">88299892</td>
-                            <td class="centrado">M</td>
-                            <td class="centrado">1</td>
-                        </tr>
-                
+                        <% clientes.forEach((cliente) => { %>
+                            <tr>
+                                <td class="centrado"><%= cliente.id_cliente %></td>
+                                <td class="centrado"><%= cliente.primer_nombre %></td>
+                                <td class="centrado"><%= cliente.segundo_nombre %></td>
+                                <td class="centrado"><%= cliente.primer_apellido %></td>
+                                <td class="centrado"><%= cliente.segundo_apellido %></td>
+                                <td class="centrado"><%= cliente.fecha_nacimiento %></td>
+                                <td class="centrado"><%= cliente.cedula %></td>
+                                <td class="centrado"><%= cliente.telefono %></td>
+                                <td class="centrado"><%= cliente.sexo %></td>
+                            </tr>
+                            <% }); %>
                     </tbody>
                 </table>
             </div>

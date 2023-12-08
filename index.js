@@ -122,13 +122,23 @@ app.post("/vali", function (req, res) {
 
 
 
+app.get("/agregarC", (req, res) => {
+  const sql = "SELECT * FROM clientes WHERE estado = TRUE";
+
+  pool.query(sql, (error, results) => {
+    if (error) throw error;
+
+    res.render("agregarCl", { clientes: results });
+  });
+});
 
 app.post("/agregarC", function (req, res) {
   const dato2 = req.body;
-  const { primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, cedula, telefono, sexo, estado } = dato2;
+  const { primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, cedula, telefono, sexo} = dato2;
 
-  const query = 'CALL AgregarCliente("'+primerNombre+'", "'+segundoNombre+'", "'+primerApellido+'", "'+segundoApellido+'", "'+fechaNacimiento+'", "'+cedula+'", "'+telefono+'", "'+sexo+'", "'+estado+'")';
-  pool.query(query, [primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, cedula, telefono, sexo, estado], function (error, results) {
+  const sql= 'CALL insertar_cliente(?,?,?,?,?,?,?,?)';
+
+  pool.query(sql, [primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, cedula, telefono, sexo], function (error, results) {
     if (error) {
       console.error(error);
       return res.status(500).json({ error: 'Error al insertar en la base de datos.' });
@@ -142,8 +152,11 @@ app.post("/agregarC", function (req, res) {
 });
 
 
-const PORT = process.env.PORT || 3000;
 
+
+
+
+const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
   console.log(`La aplicación está escuchando en el puerto ${PORT}`);
 });
