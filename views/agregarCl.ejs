@@ -130,19 +130,19 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <% clientes.forEach((cliente) => { %>
+                        <% Clientes.forEach((Cliente) => { %>
                             <tr>
-                                <td class="centrado"><%= cliente.id_cliente %></td>
-                                <td class="centrado"><%= cliente.primer_nombre %></td>
-                                <td class="centrado"><%= cliente.segundo_nombre %></td>
-                                <td class="centrado"><%= cliente.primer_apellido %></td>
-                                <td class="centrado"><%= cliente.segundo_apellido %></td>
-                                <td class="centrado"><%= cliente.fecha_nacimiento %></td>
-                                <td class="centrado"><%= cliente.cedula %></td>
-                                <td class="centrado"><%= cliente.telefono %></td>
-                                <td class="centrado"><%= cliente.sexo %></td>
-                            </tr>
-                            <% }); %>
+                                <td class="centrado"><%= Cliente.id_cliente %></td>
+                                <td class="centrado"><%= Cliente.primer_nombre %></td>
+                                <td class="centrado"><%= Cliente.segundo_nombre %></td>
+                                <td class="centrado"><%= Cliente.primer_apellido %></td>
+                                <td class="centrado"><%= Cliente.segundo_apellido %></td>
+                                <td class="centrado"><%= Cliente.fecha_nacimiento %></td>
+                                <td class="centrado"><%= Cliente.cedula %></td>
+                                <td class="centrado"><%= Cliente.telefono %></td>
+                                <td class="centrado"><%= Cliente.sexo %></td>
+                            </tr> 
+                        <% }); %>
                     </tbody>
                 </table>
             </div>

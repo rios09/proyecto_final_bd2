@@ -22,10 +22,58 @@ app.get("/", function(req,res){
     res.render("layout");
 });
 
-app.get("/agregarCl", function(req,res){
-    res.render("agregarCl");
+
+/* /vali es el nombre q le asigne en el form y post sirve como un metodo*/
+app.post("/vali", function (req, res) {
+  const datos = req.body;
+  const usuario = datos.usuario;
+  const contrasena = datos.contrasena;
+
+  const sql = "CALL ValidarUsuario(?, ?)";
+  
+  pool.query(sql, [usuario, contrasena], function (error, results) {
+    if (error) {
+      throw error;
+    } else {
+      console.log(results[0]); // results[0] contiene los resultados del procedimiento almacenado
+      if (results[0].length > 0) {
+        res.render("principal");
+      } else {
+        // Lógica para el caso en que no se encuentra un usuario
+      }
+    }
+  });
 });
 
+app.get("/agregarCl", function(req, res) {
+  const sql = "SELECT id_cliente, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, DATE_FORMAT(fecha_nacimiento, '%Y-%m-%d') as fecha_nacimiento, cedula, telefono, sexo FROM clientes WHERE estado = TRUE";
+  pool.query(sql, (error, results) => {
+    if (error) throw error;
+    console.log(results);
+    res.render("agregarCl", { Clientes: results });
+  });
+});
+
+
+
+app.post("/agregarC", function (req, res) {
+  const dato2 = req.body;
+  const { primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, cedula, telefono, sexo} = dato2;
+
+  const sql= 'CALL insertar_cliente(?,?,?,?,?,?,?,?)';
+
+  pool.query(sql, [primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, cedula, telefono, sexo], function (error, results) {
+    if (error) {
+      console.error(error);
+      return res.status(500).json({ error: 'Error al insertar en la base de datos.' });
+    }
+
+    console.log("Datos insertados correctamente.");
+    
+   
+    res.redirect('/agregarCl');
+  });
+});
 
 
 app.get("/principal", function(req,res){
@@ -66,104 +114,17 @@ app.get("/compra", function(req,res){
 
 
 
-
-
-
-
-/* /vali es el nombre q le asigne en el form y post sirve como un metodo*/
-app.post("/vali", function (req, res) {
-  const datos = req.body;
-  const usuario = datos.usuario;
-  const contrasena = datos.contrasena;
-
-  const sql = "CALL ValidarUsuario(?, ?)";
-  
-  pool.query(sql, [usuario, contrasena], function (error, results) {
-    if (error) {
-      throw error;
-    } else {
-      console.log(results[0]); // results[0] contiene los resultados del procedimiento almacenado
-      if (results[0].length > 0) {
-        res.render("principal");
-      } else {
-        // Lógica para el caso en que no se encuentra un usuario
-      }
-    }
-  });
-});
-
-
-
-/* este codigo va registrar los clientes a la base de datos*/
-
-/*app.post("/agregar", function (req,res){
-  const dato2 = req.body;
-  let primerNombre = dato2.primerNombre;
-  let segundoNombre = dato2.segundoNombre;
-  let primerApellido = dato2.primerApellido;
-  let segundoApellido = dato2.segundoApellido;
-  let fechaNacimiento = dato2.fechaNacimiento;
-  let cedula = dato2.cedula;
-  let telefono = dato2.telefono;
-  let sexo = dato2.sexo;
-  let idMembresia = dato2.idMembresia;
-
-  let regis = "INSERT INTO clientes (primer_nombre,segundo_nombre,primer_apellido,segundo_apellido,fecha_nacimiento,cedula,telefono,sexo,id_membresia) VALUES ('"+primerNombre+"','"+segundoNombre+"','"+primerApellido+"','"+segundoApellido+"','"+fechaNacimiento+"','"+cedula+"','"+telefono+"','"+sexo+"','"+idMembresia+"')";
-  pool.query(regis, [primerNombre,segundoNombre,primerApellido,segundoApellido,fechaNacimiento,cedula,telefono,sexo,idMembresia], function (error, results) {
-    if (error) {
-      throw error;
-    } else {
-      console.log("Listo"); 
-      
-    }
-  });
-  
-});*/
-
-
-
-app.get("/agregarC", (req, res) => {
-  const sql = "SELECT * FROM clientes WHERE estado = TRUE";
-
-  pool.query(sql, (error, results) => {
-    if (error) throw error;
-    console.log(results);
-    res.render("agregarCl", { clientes: results });
-  });
-});
-
-app.post("/agregarC", function (req, res) {
-  const dato2 = req.body;
-  const { primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, cedula, telefono, sexo} = dato2;
-
-  const sql= 'CALL insertar_cliente(?,?,?,?,?,?,?,?)';
-
-  pool.query(sql, [primerNombre, segundoNombre, primerApellido, segundoApellido, fechaNacimiento, cedula, telefono, sexo], function (error, results) {
-    if (error) {
-      console.error(error);
-      return res.status(500).json({ error: 'Error al insertar en la base de datos.' });
-    }
-
-    console.log("Datos insertados correctamente.");
-    
-   
-    res.redirect('/agregarCl');
-  });
-});
-
-
-
-
-
-
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
   console.log(`La aplicación está escuchando en el puerto ${PORT}`);
 });
 
 
-/*
-app.listen(3306, function(){
-    console.log("gym-admin-db.mysql.database.azure.com");
-});*/
+
+
+
+
+
+
+
 
