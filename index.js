@@ -127,7 +127,7 @@ app.get("/agregarC", (req, res) => {
 
   pool.query(sql, (error, results) => {
     if (error) throw error;
-
+    console.log(results);
     res.render("agregarCl", { clientes: results });
   });
 });
