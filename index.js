@@ -149,7 +149,7 @@ app.post("/agregarStaff", function (req, res) {
 });
 
 app.get("/usuario", function(req,res){
-  const sql= "SELECT staff.primer_nombre, staff.primer_apellido, usuarios.id_staff, usuarios.nombre_usuario, usuarios.rol FROM staff JOIN usuarios ON usuarios.id_staff = staff.id_staff WHERE estado = TRUE";
+  const sql= "SELECT staff.primer_nombre, staff.primer_apellido, usuarios.id_staff, usuarios.nombre_usuario, usuarios.rol FROM staff JOIN usuarios ON usuarios.id_staff = staff.id_staff WHERE staff.estado = TRUE";
   pool.query(sql, (error, results) => {
     if(error) throw error;
     console.log(results);
