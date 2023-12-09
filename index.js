@@ -2,7 +2,7 @@ const express = require("express");
 const mysql = require("mysql2");
 const app = express();
 
-// Configurar los detalles de conexión a la base de datos
+
 const pool = mysql.createPool({
   host: "gym-admin-db.mysql.database.azure.com",
   user: "gym_admin1",
@@ -22,28 +22,57 @@ app.get("/", function(req,res){
     res.render("layout");
 });
 
+app.get("/principal", function(req,res){
+  const sql= "SELECT membresia.id_membresia, clientes.primer_nombre, clientes.primer_apellido, DATE_FORMAT(asistencia.fecha_registro, '%Y-%m-%d') as fecha_registro FROM membresia JOIN clientes ON membresia.id_cliente = clientes.id_cliente JOIN asistencia ON clientes.id_cliente = asistencia.id_cliente";
+  pool.query(sql, (error, results) => {
+    if(error) {
+      console.error(error);
+      throw error;
+    }
+    console.log(results);
+    res.render("principal", { Asistencias: results });
+  });
+})
 
-/* /vali es el nombre q le asigne en el form y post sirve como un metodo*/
 app.post("/vali", function (req, res) {
   const datos = req.body;
   const usuario = datos.usuario;
   const contrasena = datos.contrasena;
 
-  const sql = "CALL ValidarUsuario(?, ?)";
-  
+  const sql = 'CALL ValidarUsuario(?, ?)';
+
   pool.query(sql, [usuario, contrasena], function (error, results) {
     if (error) {
-      throw error;
+      console.error(error);
+      return res.status(500).json({ error: 'Error al validar usuario.' });
     } else {
-      console.log(results[0]); // results[0] contiene los resultados del procedimiento almacenado
       if (results[0].length > 0) {
-        res.render("principal");
+        res.render("principal"); //, { Asistencias: results }
       } else {
-        // Lógica para el caso en que no se encuentra un usuario
+        res.render("mensajeError", { mensaje: 'Usuario y/o contraseña incorrectos' });
       }
     }
   });
 });
+
+
+
+
+app.post("/asistencia", function(req,res){
+  const datos3 = req.body;
+  const cliente =datos3.id_cliente;
+  const sql= 'CALL registrar_asistencia(?)';
+
+  pool.query(sql, [cliente], function (error,results){
+    if(error){
+      console.error(error);
+      return res.status(500).json({ error: 'Error al insertar en la base de datos.' });
+    }
+    console.log("Datos insertados correctamente.")
+    res.redirect('principal');
+  })
+})
+
 
 app.get("/agregarCl", function(req, res) {
   const sql = "SELECT id_cliente, primer_nombre, segundo_nombre, primer_apellido, segundo_apellido, DATE_FORMAT(fecha_nacimiento, '%Y-%m-%d') as fecha_nacimiento, cedula, telefono, sexo FROM clientes WHERE estado = TRUE";
@@ -53,7 +82,6 @@ app.get("/agregarCl", function(req, res) {
     res.render("agregarCl", { Clientes: results });
   });
 });
-
 
 
 app.post("/agregarC", function (req, res) {
@@ -76,9 +104,7 @@ app.post("/agregarC", function (req, res) {
 });
 
 
-app.get("/principal", function(req,res){
-  res.render("principal");
-});
+
 
 app.get("/tipoMembresia", function(req,res){
   res.render("tipoMembresia");

@@ -1,25 +1,146 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/styles.css" />
     <title>Login - Gimnasio App</title>
-</head>
-<body>
+    <style>
 
-        <form action="/vali"  method="post">
-            <h1>Bienvenidos</h1>
-            <label for="usuario">Usuario</label>
-            <input type="text" id="usuario" name="usuario" required>
+      /* Acordate de incluir las carpetas y revisa las ruta de los archivos */
+      body {
+          font-family: 'Arial', sans-serif;
+          background: url('/fotos/Untitled\ ‑\ Made\ with\ FlexClip.gif') center center fixed;
+          background-size: cover;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          height: 100vh;
+          margin: 0;
+      }
 
-            <label for="contrasena">Contraseña</label>
-            <input type="password" id="contrasena" name="contrasena" required>
+      form {
+          background-color: rgba(255, 247, 247, 0.8);
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+          padding: 30px;
+          border-radius: 8px;
+          width: 400px;
+          text-align: center;
+          animation: fadeIn 0.5s ease-in-out;
+          height: 40%;
+          max-width: 80%;
+      }
 
-          
-            <input type="submit" value = "Iniciar Sesión">
-        </form>
+      @keyframes fadeIn {
+          from {
+              opacity: 0;
+              transform: translateY(-20px);
+          }
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
 
-    
-</body>
+      h1 {
+          color: #333;
+          margin-bottom: 20px;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+      }
+
+      h1 img {
+          width: 50px;
+          margin-bottom: 10px;
+      }
+
+      label {
+          display: block;
+          margin: 10px 0 5px;
+          text-align: left;
+          opacity: 0;
+          transform: translateY(-10px);
+          animation: fadeInLabel 0.5s ease-in-out forwards;
+      }
+
+      @keyframes fadeInLabel {
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+      input {
+          width: 100%;
+          padding: 10px;
+          margin-bottom: 10px;
+          box-sizing: border-box;
+          opacity: 0;
+          transform: translateY(10px);
+          animation: fadeInInput 0.5s ease-in-out forwards; /
+      }
+
+      @keyframes fadeInInput {
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+      input[type="submit"] {
+          background-color: #4caf50;
+          color: #fff;
+          border: none;
+          padding: 10px;
+          border-radius: 4px;
+          cursor: pointer;
+          opacity: 0;
+          transform: translateY(20px);
+          animation: fadeInButton 0.5s ease-in-out forwards;
+      }
+
+      @keyframes fadeInButton {
+          to {
+              opacity: 1;
+              transform: translateY(0);
+          }
+      }
+
+      input[type="submit"]:hover {
+          background-color: #45a049;
+      }
+    </style>
+  </head>
+
+  <body>
+    <form action="/vali" method="post">
+      <h1>
+        <img src="/fotos/imagengym.png" alt="Imagen de bienvenida" />
+        Bienvenidos
+      </h1>
+      <label for="usuario">Usuario</label>
+      <input
+        type="text"
+        id="usuario"
+        name="usuario"
+        placeholder="ejemplo: Ale008"
+        required
+        autofocus
+      />
+
+      <label for="contrasena">Contraseña</label>
+      <input
+        type="password"
+        id="contrasena"
+        name="contrasena"
+        placeholder="***********"
+        required
+      />
+      <hr />
+
+      <input type="submit" value="Iniciar Sesión" />
+    </form>
+  </body>
 </html>
