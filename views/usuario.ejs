@@ -67,35 +67,57 @@
       <div class="row justify-content-center">
           <div class="col-sm-6 py-4 bg-white bg-primary-border-subtle ">
               <h2>Nuevo Usuario</h2>
-              <form class="row g-3">
-                <div class="col-md-6">
+              <form action="/agregarUsuario" method="post">
+                <div class="mb-1">
                   <label for="nombre" class="form-label">Nombre Usuario</label>
-                  <input type="text" class="form-control" id="nombre">
+                  <input type="text" class="form-control" id="usuario" name="usuario">
                 </div>
-                <div class="col-md-6">
-                  <label for="contracena" class="form-label">Contraceña</label>
-                  <input type="password" class="form-control" id="contracena">
+                <div class="mb-1">
+                  <label for="contrasena" class="form-label">Contraseña</label>
+                  <input type="password" class="form-control" id="contrasena" name="contrasena">
                 </div>
             
-                <div class="col-md-4">
-                  <label for="rol" class="form-label">Rol</label>
-                  <input type="text" class="form-control" id="rol">
+                <div class="mb-1">
+                  <label for="rol" class="form-label">Rol de usuario</label>
+                  <input type="text" class="form-control" id="rol" name="rol" placeholder="Ej: Admininstrador o Usuario">
                 </div>
-                <div class="col-md-4">
-                    <label for="estado" class="form-label">Estado</label>
-                    <input type="text" class="form-control" id="estado">
-                  </div>
-                <div class="col-md-4">
-                  <label for="idstaff" class="form-label">ID Staff</label>
-                  <input type="text" class="form-control" id="idstaff">
+                <div class="mb-1">
+
+                  <label for="idstaff" class="form-label">ID Empleado</label>
+                  <input type="text" class="form-control" id="idstaff" name="idstaff">
                 </div>
                
-                <div class="col-12">
-                  <button type="submit" class="btn btn-primary">Aceptar</button>
+                <div class="d-grid gap-2">
+                    <button class="btn btn-success">Aceptar</button>
+                    <button class="btn btn-secondary">Limpiar</button>
                 </div>
               </form>
           </div>
-      </div>
+          <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
+            <h2>Listado de Empleados</h2>
+            <table class="table table-dark table-striped">
+                <thead>
+                    <tr>
+                        <th class="centrado">Nombre</th>
+                        <th class="centrado">Apellido</th>
+                        <th class="centrado">ID empleado</th>
+                        <th class="centrado">Nombre de Usuario</th>
+                        <th class="centrado">Rol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% Users.forEach((user) => { %>
+                    <tr>
+                        <td class="centrado"><%= user.primer_nombre %></td>
+                        <td class="centrado"><%= user.primer_apellido %></td>
+                        <td class="centrado"><%= user.id_staff %></td>
+                        <td class="centrado"><%= user.nombre_usuario %></td>
+                        <td class="centrado"><%= user.rol %></td>
+                    </tr>
+                    <% }); %>
+                </tbody>
+            </table>
+        </div>
   </div>
 
   </div>

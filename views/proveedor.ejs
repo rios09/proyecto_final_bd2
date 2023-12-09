@@ -65,33 +65,27 @@
         <div class="row">
             <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white bg-primary-border-subtle">
                 <h2>Agregar Proveedor</h2>
-                <form action="/agregarC" method="post">
+                <form action="/agregarProv" method="post">
                     <div class="mb-1">
                         <label for="codigo" class="form-label">Codigo  :</label>
-                        <input type="text" class="form-control" id="codigo" placeholder="Proveedor" autofocus />
+                        <input type="text" class="form-control" id="codigo" name="codigo" placeholder="Ej: FTA231" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="nombre" class="form-label">Nombre:</label>
-                        <input type="text" class="form-control" id="nombre" placeholder="Proveedor" autofocus />
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Muscle Sup" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="direccion" class="form-label">Direccion:</label>
-                        <input type="text" class="form-control" id="direccion" placeholder="Proveedor" autofocus />
+                        <input type="text" class="form-control" id="direccion" name="direccion" placeholder="Managua,nicaragua" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="telefono" class="form-label">Telefono:</label>
-                        <input type="tel" class="form-control" id="telefono" placeholder="Telefono" autofocus />
+                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Telefono" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="url" class="form-label">URL:</label>
-                        <input type="tel" class="form-control" id="url" placeholder="Direccion url" autofocus />
+                        <input type="text" class="form-control" id="url" name="url" placeholder="Red Social o Web" autofocus />
                     </div>
-               
-                    <div class="mb-1">
-                        <label for="estado" class="form-label">Estado:</label>
-                        <input type="tel" class="form-control" id="estado" placeholder="xxx" autofocus />
-                    </div>
-
                 
                     
                     <div class="d-grid gap-2">
@@ -101,32 +95,27 @@
                 </form>
             </div>
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-primary">
-                <h2>Listado de Clientes</h2>
+                <h2>Listado de Proveedores</h2>
                 <table class="table table-white table-striped">
                     <thead>
                         <tr>
-                            <th class="centrado">Cod</th>
-                            <th class="centrado">nombre</th>
-                            <th class="centrado">apellido</th>
-                            <th class="centrado">Fecha Nacimiento</th>
-                            <th class="centrado">Cedula</th>
+                            <th class="centrado">Codigo del Proveedor</th>
+                            <th class="centrado">Nombre</th>
+                            <th class="centrado">Direccion</th>
                             <th class="centrado">Telefono</th>
-                         
+                            <th class="centrado">Website-RS</th>                      
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td class="centrado">1</td>
-                            <td class="centrado">Nery</td>
-            
-                            <td class="centrado">Martinez</td>
-                      
-                            <td class="centrado">05/15/23</td>
-                            <td class="centrado">36879945</td>
-                            <td class="centrado">88299892</td>
-                        
-                        </tr>
-                
+                        <% proveedores.forEach((proveedor) => { %>
+                            <tr>
+                            <td class="centrado"><%= proveedor.cod_proveedor %></td>
+                            <td class="centrado"><%= proveedor.nombre_prov %></td>           
+                            <td class="centrado"><%= proveedor.direccion_prov %></td>                 
+                            <td class="centrado"><%= proveedor.telefono %></td>
+                            <td class="centrado"><%= proveedor.url %></td>                       
+                            </tr>
+                        <% }); %>
                     </tbody>
                 </table>
             </div>

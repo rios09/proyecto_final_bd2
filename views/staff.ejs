@@ -62,47 +62,47 @@
     </nav>
     
     <div class="container my-3">
-        <div class="row">
-            <div class="col-sm-12 col-md-4 col-lg-4 col-xl-4 py-4 bg-white bg-primary-border-subtle">
+        <div class="row justify-content-center">
+            <div class="col-sm-6 py-4 bg-white bg-primary-border-subtle ">
                 <h2>Nuevo trabajador</h2>
-                <form action="/agregarC" method="post">
+                <form action="/agregarStaff" method="post">
                     <div class="mb-1">
                         <label for="primerNombre" class="form-label">Primer Nombre:</label>
-                        <input type="text" class="form-control" id="primerNombre" placeholder="Nombre 1" autofocus />
+                        <input type="text" class="form-control" id="primerNombre" name="primerNombre" placeholder="Nombre 1" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="segundoNombre" class="form-label">Segundo Nombre:</label>
-                        <input type="text" class="form-control" id="segundoNombre" placeholder="Nombre 2" autofocus />
+                        <input type="text" class="form-control" id="segundoNombre" name="segundoNombre" placeholder="Nombre 2" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="primerApellido" class="form-label">Primer Apellido:</label>
-                        <input type="text" class="form-control" id="primerApellido" placeholder="Apellido 1" autofocus />
+                        <input type="text" class="form-control" id="primerApellido" name="primerApellido" placeholder="Apellido 1" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="segundoApellido" class="form-label">Segundo Apellido:</label>
-                        <input type="text" class="form-control" id="segundoApellido" placeholder="Apellido 2" autofocus />
+                        <input type="text" class="form-control" id="segundoApellido" name="segundoApellido" placeholder="Apellido 2" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="fechaNacimiento" class="form-label">Fecha de Nacimiento:</label>
-                        <input type="text" class="form-control" id="fechaNacimiento" placeholder="Fecha" autofocus />
+                        <input type="text" class="form-control" id="fechaNacimiento" name="fechaNacimiento" placeholder="Fecha" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="cedula" class="form-label">Cédula:</label>
-                        <input type="tel" class="form-control" id="cedula" placeholder="Identificacion" autofocus />
+                        <input type="text" class="form-control" id="cedula" name="cedula" placeholder="Identificacion" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="telefono" class="form-label">Teléfono:</label>
-                        <input type="tel" class="form-control" id="telefono" placeholder="Tel" autofocus />
+                        <input type="text" class="form-control" id="telefono"  name="telefono" placeholder="Tel" autofocus />
                     </div>
                     <div class="mb-1">
                         <label for="sexo" class="form-label">Sexo:</label>
-                        <input type="text" class="form-control" id="sexo" placeholder="Sexo" autofocus />
+                        <input type="text" class="form-control" id="sexo" name="sexo" placeholder="Sexo" autofocus />
                     </div>
+                    
                     <div class="mb-1">
-                        <label for="idMembresia" class="form-label">ID Cargo:</label>
-                        <input type="text" class="form-control" id="idMembresia" placeholder="este se la eliminar" autofocus />
+                        <label for="cargo" class="form-label">Cargo:</label>
+                        <input type="text" class="form-control" id="cargo" name="cargo" placeholder="Cargo" autofocus />
                     </div>
-                
 
                 
                     
@@ -112,37 +112,40 @@
                     </div>
                 </form>
             </div>
+            <br>
+             <br>
             <div class="col-sm-12 col-md-8 col-lg-8 col-xl-8 py-4 bg-white">
-                <h2>Listado de Clientes</h2>
+                <h2>Listado de Empleados</h2>
                 <table class="table table-dark table-striped">
                     <thead>
                         <tr>
-                            <th class="centrado">#</th>
+                            <th class="centrado">ID Empleado</th>
                             <th class="centrado">Nombre</th>
-                            <th class="centrado">apellido</th>
+                            <th class="centrado">Segundo Nombre</th>
+                            <th class="centrado">Apellido</th>
+                            <th class="centrado">Segundo Apellido</th>
                             <th class="centrado">Fecha Nacimiento</th>
                             <th class="centrado">Cedula</th>
                             <th class="centrado">Telefono</th>
                             <th class="centrado">Sexo</th>
-                            <th class="centrado">ID Membresia</th>
-                            
-                          
+                            <th class="centrado">Posicion</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <% empleados.forEach((empleado) => { %>
                         <tr>
-                            <td class="centrado">1</td>
-                            <td class="centrado">Nery</td>
-            
-                            <td class="centrado">Martinez</td>
-                      
-                            <td class="centrado">05/15/23</td>
-                            <td class="centrado">36879945</td>
-                            <td class="centrado">88299892</td>
-                            <td class="centrado">M</td>
-                            <td class="centrado">1</td>
+                            <td class="centrado"><%= empleado.id_staff %></td>
+                            <td class="centrado"><%= empleado.primer_nombre %></td>
+                            <td class="centrado"><%= empleado.segundo_nombre %></td>
+                            <td class="centrado"><%= empleado.primer_apellido %></td>
+                            <td class="centrado"><%= empleado.segundo_apellido %></td>
+                            <td class="centrado"><%= empleado.fecha_nacimiento %></td>
+                            <td class="centrado"><%= empleado.cedula %></td>
+                            <td class="centrado"><%= empleado.telefono %></td>
+                            <td class="centrado"><%= empleado.sexo %></td>
+                            <td class="centrado"><%= empleado.posicion %></td>
                         </tr>
-                
+                        <% }); %>
                     </tbody>
                 </table>
             </div>

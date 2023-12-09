@@ -1,75 +1,27 @@
 body {
     font-family: 'Arial', sans-serif;
-    margin: 0;
-    padding: 0;
+    background-size: cover; 
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100vh;
-    background-color: #d7e7ec; 
+    margin: 0;
 }
 
-.login-container {
-    background-color: #9b2828; 
-    border-radius: 8px;
+form {
+    background-color: rgba(255, 247, 247, 0.8); 
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    width: 360px;
-    animation: fadeIn 0.10s ease-in-out;
-}
-
-.login-form {
-    padding: 20px;
-}
-
-h1 {
+    padding: 30px;
+    border-radius: 8px;
+    width: 400px;
     text-align: center;
-    color: #333;
+    animation: fadeIn 0.5s ease-in-out; 
+    height: 40%;   
+    max-width: 80%; 
 }
-
-label {
-    display: block;
-    margin-top: 10px;
-    color: #141413; 
-    transform: translateY(10px);
-    animation: fadeInLabel 0.5s ease-in-out forwards;
-}
-
-input {
-    width: 100%;
-    padding: 8px;
-    margin-top: 5px;
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeInInput 0.5s ease-in-out forwards;
-}
-
-button {
-    width: 100%;
-    padding: 10px;
-    background-color: #55c57a; 
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    font-size: 16px;
-    opacity: 0;
-    transform: translateY(10px);
-    animation: fadeInButton 0.5s ease-in-out forwards;
-}
-
-button:hover {
-    background-color: #48a567; 
-}
-
-/* en esta seccion estan los efectos*/
 
 @keyframes fadeIn {
-    from {
+    from { 
         opacity: 0;
         transform: translateY(-20px);
     }
@@ -79,11 +31,44 @@ button:hover {
     }
 }
 
+h1 {
+    color: #333;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center; 
+}
+
+h1 img {
+    width: 50px; 
+    margin-bottom: 10px; 
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+    text-align: left;
+    opacity: 0;
+    transform: translateY(-10px);
+    animation: fadeInLabel 0.5s ease-in-out forwards; 
+}
+
 @keyframes fadeInLabel {
     to {
         opacity: 1;
         transform: translateY(0);
     }
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    opacity: 0;
+    transform: translateY(10px);
+    animation: fadeInInput 0.5s ease-in-out forwards; /
 }
 
 @keyframes fadeInInput {
@@ -93,6 +78,18 @@ button:hover {
     }
 }
 
+input[type="submit"] {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0;
+    transform: translateY(20px);
+    animation: fadeInButton 0.5s ease-in-out forwards; 
+}
+
 @keyframes fadeInButton {
     to {
         opacity: 1;
@@ -100,5 +97,6 @@ button:hover {
     }
 }
 
-
-
+input[type="submit"]:hover {
+    background-color: #45a049;
+}
